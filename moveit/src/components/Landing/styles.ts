@@ -228,7 +228,7 @@ export const Container = styled.div`
         .panel .right-container {
             justify-content: center;
 
-            margin-top: 50px;
+            margin-top: 3rem;
         }
     }
 `;

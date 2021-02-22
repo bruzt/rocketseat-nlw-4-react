@@ -1,11 +1,10 @@
 import React from 'react';
-import { AiFillCaretRight } from 'react-icons/ai';
 
 import foto from '../../assets/foto.jpg';
 import arrowUp from '../../assets/arrowUp.svg';
 import arrowUpPlus from '../../assets/arrowUpPlus.svg';
 
-import { Container } from './styles';
+import { Container, AiFillCaretRightIcon } from './styles';
 
 export default function Landing(){
 
@@ -17,7 +16,8 @@ export default function Landing(){
 				<div className="xp-bar">
 					<span>0 xp</span>
 					<div className="bar">
-						<div className="progress"></div>
+						<div className="progress" style={{ width: '60%' }}></div>
+						<span className='current-xp' style={{ left: '60%' }}>360 xp</span>
 					</div>
 					<span>600 xp</span>
 				</div>
@@ -69,7 +69,7 @@ export default function Landing(){
 
 						<button type='button'>
 							<span>Iniciar um ciclo</span>
-							<AiFillCaretRight size={24} />
+							<AiFillCaretRightIcon />
 						</button>
 					</div>
 
@@ -89,7 +89,7 @@ export default function Landing(){
 							</span>
 						</div>
 					</div>
-					
+
 				</div>
 			</div>
 

@@ -1,8 +1,15 @@
 import styled from 'styled-components';
+import { AiFillCaretRight } from 'react-icons/ai';
+
+export const AiFillCaretRightIcon = styled(AiFillCaretRight)`
+    width: 1.5rem;
+    height: 1.5rem;
+`;
 
 export const Container = styled.div`
     width: 100vw;
-    height: 100vh;
+    height: 100%;
+    min-height: 100vh;
 
     display: flex;
     justify-content: center;
@@ -26,25 +33,40 @@ export const Container = styled.div`
     .xp-bar .bar {
         width: 100%;
         height: 4px;
+
+        position: relative;
         
-        background: #DCDDE0;
+        background: var(--gray-line);
         border-radius: 5px;
         margin: 0 10px;
         
-        box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.05);
+        box-shadow: 0px 0px 4rem rgba(0, 0, 0, 0.05);
+    }
+
+    .bar .progress {
+        width: 0px;
+        height: 100%;
+        background: var(--blue);
+    }
+
+    .bar .current-xp {
+        position: absolute;
+        top: 0.5rem;
+
+        transform: translateX(-50%);
     }
 
     .panel .left-right-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
 
-        margin-top: 50px;
+        margin-top: 3rem;
     }
     
     .panel .left-container {
         width: 100%;
         max-width: 400px;
-        height: 500px;
+        height: 31rem;
 
         display: flex;
         flex-direction: column;
@@ -57,8 +79,8 @@ export const Container = styled.div`
     }
     
     .left-container .user img {
-        width: 88px;
-        height: 88px;
+        width: 5rem;
+        height: 5rem;
         border-radius: 50%;
     }
     
@@ -69,19 +91,19 @@ export const Container = styled.div`
         margin-left: 20px;
 
         & span:nth-child(1){
-            font-size: 24px;
+            font-size: 1.5rem;
             font-weight: 600;
 
             margin-bottom: 10px;
         }
     
         & span:nth-child(2){
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: 400;
 
             & .arrow {
-                width: 16px;
-                height: 16px;
+                width: 1rem;
+                height: 1rem;
             }
         }
     }
@@ -93,22 +115,22 @@ export const Container = styled.div`
 
     .left-container .countdown-clock {
         display: flex;
-        height: 144px;
+        height: 9rem;
 
-        margin-top: 20px;
+        margin-top: 1rem;
 
         font-family: Rajdhani;
-        font-size: 120px;
+        font-size: 8rem;
         font-weight: 600;
 
         justify-content: center;
     }
 
     .left-container .countdown-clock .number {
-        background: #fff;
+        background: var(--white);
         height: 100%;
 
-        box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.05);
+        box-shadow: 0px 0px 4rem rgba(0, 0, 0, 0.05);
         border-radius: 5px;
         
         display: flex;
@@ -122,19 +144,25 @@ export const Container = styled.div`
 
     .left-container button {
         width: 100%;
-        height: 80px;
+        height: 5rem;
 
         border: 0;
         border-radius: 5px;
-        background: #5965E0;
+        background: var(--blue);
 
-        color: #fff;
-        font-size: 20px;
+        color: var(--white);
+        font-size: 1rem;
         font-weight: 600;
 
         display: flex;
         justify-content: center;
         align-items: center;
+
+        transition: 0.2s;
+
+        &:hover {
+            background: var(--blue-dark);
+        }
     }
 
     .left-container button span {
@@ -143,6 +171,7 @@ export const Container = styled.div`
 
     .right-container {
         width: 100%;
+        height: 31rem;
 
         display: flex;
         justify-content: flex-end;
@@ -154,7 +183,7 @@ export const Container = styled.div`
         max-width: 468px;
         height: 100%;
 
-        background: #fff;
+        background: var(--white);
 
         display: flex;
         flex-direction: column;
@@ -163,9 +192,9 @@ export const Container = styled.div`
     }
 
     .init-cicle img {
-        height: 80px;
+        height: 5rem;
 
-        margin-bottom: 10px;
+        margin-bottom: 1rem;
     }
 
     .init-cicle h2,

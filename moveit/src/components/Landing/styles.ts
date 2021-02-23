@@ -1,10 +1,4 @@
 import styled from 'styled-components';
-import { AiFillCaretRight } from 'react-icons/ai';
-
-export const AiFillCaretRightIcon = styled(AiFillCaretRight)`
-    width: 1.5rem;
-    height: 1.5rem;
-`;
 
 export const Container = styled.div`
     width: 100vw;
@@ -18,42 +12,6 @@ export const Container = styled.div`
     .panel {
         width: 100%;
         max-width: 960px;
-    }
-    
-    .panel .xp-bar {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .xp-bar span {
-        flex-shrink: 0;
-    }
-    
-    .xp-bar .bar {
-        width: 100%;
-        height: 4px;
-
-        position: relative;
-        
-        background: var(--gray-line);
-        border-radius: 5px;
-        margin: 0 10px;
-        
-        box-shadow: 0px 0px 4rem rgba(0, 0, 0, 0.05);
-    }
-
-    .bar .progress {
-        width: 0px;
-        height: 100%;
-        background: var(--blue);
-    }
-
-    .bar .current-xp {
-        position: absolute;
-        top: 0.5rem;
-
-        transform: translateX(-50%);
     }
 
     .panel .left-right-container {
@@ -72,101 +30,19 @@ export const Container = styled.div`
         flex-direction: column;
         justify-content: space-between;
     }
-
-    .left-container .user {
-        display: flex;
-        align-items: center;
-    }
-    
-    .left-container .user img {
-        width: 5rem;
-        height: 5rem;
-        border-radius: 50%;
-    }
-    
-    .left-container .user .name-level {
-        display: flex;
-        flex-direction: column;
-        
-        margin-left: 20px;
-
-        & span:nth-child(1){
-            font-size: 1.5rem;
-            font-weight: 600;
-
-            margin-bottom: 10px;
-        }
-    
-        & span:nth-child(2){
-            font-size: 1rem;
-            font-weight: 400;
-
-            & .arrow {
-                width: 1rem;
-                height: 1rem;
-            }
-        }
-    }
     
     .left-container .complete-challenges {
         display: flex;
         justify-content: space-between;
-    }
-
-    .left-container .countdown-clock {
-        display: flex;
-        height: 9rem;
-
-        margin-top: 1rem;
-
-        font-family: Rajdhani;
-        font-size: 8rem;
-        font-weight: 600;
-
-        justify-content: center;
-    }
-
-    .left-container .countdown-clock .number {
-        background: var(--white);
-        height: 100%;
-
-        box-shadow: 0px 0px 4rem rgba(0, 0, 0, 0.05);
-        border-radius: 5px;
-        
-        display: flex;
-        justify-content: center;
         align-items: center;
 
-        &:nth-child(1), &:nth-child(4){
-            margin-right: 2px;
+        & span:nth-child(1){
+            font-size: 1.25rem;
         }
-    }
 
-    .left-container button {
-        width: 100%;
-        height: 5rem;
-
-        border: 0;
-        border-radius: 5px;
-        background: var(--blue);
-
-        color: var(--white);
-        font-size: 1rem;
-        font-weight: 600;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        transition: 0.2s;
-
-        &:hover {
-            background: var(--blue-dark);
+        & span:nth-child(2){
+            font-size: 1.5rem;
         }
-    }
-
-    .left-container button span {
-        margin-right: 10px;
     }
 
     .right-container {

@@ -1,43 +1,30 @@
 import React from 'react';
+import Head from 'next/head';
 
-import foto from '../../assets/foto.jpg';
-import arrowUp from '../../assets/arrowUp.svg';
-import arrowUpPlus from '../../assets/arrowUpPlus.svg';
+import XpBar from '../XpBar';
+import UserProfile from '../UserProfile';
+import CountdownClock from '../CountdownClock';
 
-import { Container, AiFillCaretRightIcon } from './styles';
+import { Container } from './styles';
 
 export default function Landing(){
 
 	return (
 		<Container>
+			<Head>
+				<title>Início | Move.it</title>
+			</Head>
 			
 			<div className="panel">
 
-				<div className="xp-bar">
-					<span>0 xp</span>
-					<div className="bar">
-						<div className="progress" style={{ width: '60%' }}></div>
-						<span className='current-xp' style={{ left: '60%' }}>360 xp</span>
-					</div>
-					<span>600 xp</span>
-				</div>
+				<XpBar />
 
 				<div className="left-right-container">
 
-					<div className="left-container">
+					<section className="left-container">
 
-						<div className="user">
-
-							<img src={foto} alt="foto"/>
-
-							<div className="name-level">
-								<span>Bruno Zutim</span>
-								<span>
-									<img className='arrow' src={arrowUp} alt="arrow up"/> 
-									&nbsp;Level 1
-								</span>
-							</div>
-						</div>
+						<UserProfile />
+						
 						<div className="challenges-container">
 
 							<div className="complete-challenges">
@@ -48,32 +35,11 @@ export default function Landing(){
 							<hr/>
 						</div>
 
-						<div className="countdown-clock">
+						<CountdownClock />
 
-							<div className="digits number">
-								<span>2</span>
-							</div>
-							<div className="digits number">
-								<span>5</span>
-							</div>
-							<div className="digits">
-								<span>:</span>
-							</div>
-							<div className="digits number">
-								<span>0</span>
-							</div>
-							<div className="digits number">
-								<span>0</span>
-							</div>
-						</div>
+					</section>
 
-						<button type='button'>
-							<span>Iniciar um ciclo</span>
-							<AiFillCaretRightIcon />
-						</button>
-					</div>
-
-					<div className="right-container">
+					<section className="right-container">
 
 						<div className="init-cicle">
 							<h2>
@@ -81,14 +47,13 @@ export default function Landing(){
 								<span>Para receber desafios</span>
 							</h2>
 
-
 							<span>
-								<img src={arrowUpPlus} alt="arrow up plus"/>
+								<img src='icons/arrowUpPlus.svg' alt="arrow up plus"/>
 								<span>Avance de level completando</span>
 								<span>os desafios.</span>
 							</span>
 						</div>
-					</div>
+					</section>
 
 				</div>
 			</div>

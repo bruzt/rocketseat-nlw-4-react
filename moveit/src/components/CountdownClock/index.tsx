@@ -1,27 +1,45 @@
 import React, { useEffect, useState } from 'react';
 
-import { Container, AiFillCaretRightIcon } from './styles';
+import { Container, AiFillCaretRightIcon, AiOutlineCloseIcon, AiOutlineCheckCircleIcon } from './styles';
+
+const countdownTime = 0.1 * 60;
+let countdownTimeout: NodeJS.Timeout;
 
 export default function CountdownClock(){
 
-	const [timeState, setTime] = useState(25 * 60);
-	const [activeState, setActive] = useState(false);
+	const [timeState, setTime] = useState(countdownTime);
+	const [isActiveState, setIsActive] = useState(false);
+	const [hasFinishedState, setHasFinished] = useState(false);
 
 	useEffect( () => {
 		
-		if(activeState && timeState > 0){
-			setTimeout(() => {
+		if(isActiveState && timeState > 0){
+
+			setHasFinished(false);
+
+			countdownTimeout = setTimeout(() => {
 				setTime(timeState - 1);
 			}, 1000);
+
+		} else if(isActiveState && timeState == 0){
+			console.log('finalizou')
+			setHasFinished(true);
+			setIsActive(false);
 		}
 
-	}, [activeState, timeState]);
+	}, [isActiveState, timeState]);
 
 	const minutes = Math.floor(timeState / 60);
 	const seconds = timeState % 60;
 
 	const minutesArray = String(minutes).padStart(2, '0').split('');
 	const secondsArray = String(seconds).padStart(2, '0').split('');
+
+	function abandonCicle(){
+		clearTimeout(countdownTimeout); 
+		setTime(countdownTime);
+		setIsActive(false);
+	}
 
 	return (
 		<Container>
@@ -46,13 +64,32 @@ export default function CountdownClock(){
 
 			</div>
 
-			<button 
-				type='button'
-				onClick={() => setActive(true)}
-			>
-				<span>Iniciar um ciclo</span>
-				<AiFillCaretRightIcon />
-			</button>
+			{hasFinishedState ? (
+				<button 
+					disabled={true}
+					className='finished'
+					type='button'
+				>
+					<span>Ciclo Encerrado <AiOutlineCheckCircleIcon /></span>
+				</button>
+			) : (
+				isActiveState ? (
+					<button 
+						className='active'
+						type='button'
+						onClick={abandonCicle}
+					>
+						<span>Abandonar ciclo <AiOutlineCloseIcon /></span>
+					</button>
+				) : (
+					<button 
+						type='button'
+						onClick={() => setIsActive(true)}
+					>
+						<span>Iniciar um ciclo <AiFillCaretRightIcon /></span>
+					</button>
+				)
+			)}
 			
 		</Container>
 	);

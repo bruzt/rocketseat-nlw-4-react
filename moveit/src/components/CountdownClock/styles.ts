@@ -1,9 +1,27 @@
 import styled from 'styled-components';
-import { AiFillCaretRight } from 'react-icons/ai';
+import { AiFillCaretRight, AiOutlineClose, AiOutlineCheckCircle } from 'react-icons/ai';
 
 export const AiFillCaretRightIcon = styled(AiFillCaretRight)`
     width: 1.5rem;
     height: 1.5rem;
+
+    margin-left: 10px;
+`;
+
+export const AiOutlineCloseIcon = styled(AiOutlineClose)`
+    width: 1.2rem;
+    height: 1.2rem;
+
+    margin-left: 10px;
+`;
+
+export const AiOutlineCheckCircleIcon = styled(AiOutlineCheckCircle)`
+    width: 1.5rem;
+    height: 1.5rem;
+
+    margin-left: 10px;
+
+    color: var(--green);
 `;
 
 export const Container = styled.div`
@@ -63,9 +81,6 @@ export const Container = styled.div`
         font-size: 1rem;
         font-weight: 600;
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
 
         transition: background-color 0.2s;
 
@@ -74,7 +89,26 @@ export const Container = styled.div`
         }
     }
 
+    button.active {
+        color: var(--text);
+        background: var(--white);
+
+        &:hover {
+            color: var(--white);
+            background: var(--red);
+        }
+    }
+
+    button.finished {
+        color: var(--text);
+        background: var(--white);
+
+        border-bottom: 5px solid var(--green);
+    }
+
     button span {
-        margin-right: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 `;

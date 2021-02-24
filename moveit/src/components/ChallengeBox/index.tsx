@@ -1,39 +1,41 @@
 import React from 'react';
 
+import { useChallenges } from '../../contexts/ChallengesContext';
+
 import { Container } from './styles';
 
 export default function ChallengeBox() {
 
-	const hasActiveChallenge = true;
+	const { 
+		activeChallengeState, 
+		resetChallenge 
+	} = useChallenges();
 
 	return (
 		<Container>
 
-			{hasActiveChallenge ? (
+			{activeChallengeState ? (
 				<div className="active">
 
 					<header>
-						<span>Ganhe 400 xp</span>
+						<span>Ganhe {activeChallengeState.amount} xp</span>
 
 						<hr/>
 					</header>
 
 					<main>
-						<img src="icons/exercise.svg" alt="exercise"/>
+						<img src={`icons/${activeChallengeState.type}.svg`} alt={`${activeChallengeState.type}`} />
 
-						<h2>Exercite-se</h2>
+						<h2>Novo desafio</h2>
 
-						<p>
-							<span>Bora lá meu parça.</span>
-							<span>Caminhe por 3 minutos e estique suas pernas</span>
-							<span>para você ficar saudável</span>
-						</p>
+						<p>{activeChallengeState.description}</p>
 					</main>
 
 					<footer>
 						<button 
 							type='button'
 							className='failed'
+							onClick={resetChallenge}
 						>
 							<span>Falhei</span>
 						</button>
@@ -56,8 +58,7 @@ export default function ChallengeBox() {
 
 					<span>
 						<img src='icons/arrowUpPlus.svg' alt="arrow up plus"/>
-						<span>Avance de level completando</span>
-						<span>os desafios.</span>
+						<p>Avance de level completando os desafios.</p>
 					</span>
 				</div>
 			)}

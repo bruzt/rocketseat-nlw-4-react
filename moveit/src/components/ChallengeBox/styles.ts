@@ -67,13 +67,10 @@ export const Container = styled.div`
         }
 
         & main p {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+            width: 70%;
 
-        & main p > * {
-            margin-bottom: 0.5rem;
+            line-height: 2rem;
+            text-align: center;
         }
 
         & footer {
@@ -122,6 +119,12 @@ export const Container = styled.div`
 
         & h2 {
             font-weight: 600;
+        }
+
+        & > span {
+            width: 50%;
+
+            text-align: center;
         }
 
         & img {

@@ -1,8 +1,12 @@
 import React from 'react';
 
+import { useChallenges } from '../../contexts/ChallengesContext';
+
 import { Container } from './styles';
 
 export default function UserProfile() {
+
+	const challengesContext = useChallenges();
 
 	return (
 		<Container>
@@ -13,7 +17,7 @@ export default function UserProfile() {
 				<span>Bruno Zutim</span>
 				<span>
 					<img className='arrow' src='icons/arrowUp.svg' alt="arrow up"/> 
-					&nbsp;Level 1
+					&nbsp;Level {challengesContext.levelState}
 				</span>
 			</div>
 			

@@ -6,9 +6,13 @@ import UserProfile from '../UserProfile';
 import CountdownClock from '../CountdownClock';
 import ChallengeBox from '../ChallengeBox';
 
+import { useChallenges } from '../../contexts/ChallengesContext';
+
 import { Container } from './styles';
 
 export default function Landing(){
+
+	const { challengesCompletedState } = useChallenges();
 
 	return (
 		<Container>
@@ -30,7 +34,7 @@ export default function Landing(){
 
 							<div className="complete-challenges">
 								<span>Desafios completos</span>
-								<span>00</span>
+								<span>{challengesCompletedState}</span>
 							</div>
 
 							<hr/>

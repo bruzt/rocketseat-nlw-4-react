@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import { useChallenges } from '../../contexts/ChallengesContext';
+
 import { Container, AiFillCaretRightIcon, AiOutlineCloseIcon, AiOutlineCheckCircleIcon } from './styles';
 
 const countdownTime = 0.1 * 60;
@@ -10,6 +12,8 @@ export default function CountdownClock(){
 	const [timeState, setTime] = useState(countdownTime);
 	const [isActiveState, setIsActive] = useState(false);
 	const [hasFinishedState, setHasFinished] = useState(false);
+
+	const challengesContext = useChallenges();
 
 	useEffect( () => {
 		
@@ -22,9 +26,10 @@ export default function CountdownClock(){
 			}, 1000);
 
 		} else if(isActiveState && timeState == 0){
-			console.log('finalizou')
+			
 			setHasFinished(true);
 			setIsActive(false);
+			challengesContext.startNewChallenge();
 		}
 
 	}, [isActiveState, timeState]);

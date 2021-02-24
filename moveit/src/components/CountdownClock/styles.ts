@@ -55,11 +55,15 @@ export const Container = styled.div`
             margin-right: 2px;
             border-top-left-radius: 5px;
             border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            border-bottom-left-radius: 5px;
         }
 
         &:nth-child(2), &:nth-child(5){
             border-top-right-radius: 5px;
             border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border-bottom-right-radius: 5px;
         }
     }
 

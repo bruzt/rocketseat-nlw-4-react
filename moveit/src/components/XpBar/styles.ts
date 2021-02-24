@@ -34,5 +34,7 @@ export const Container = styled.div`
         top: 0.5rem;
 
         transform: translateX(-50%);
+
+        white-space: nowrap;
     }
 `;

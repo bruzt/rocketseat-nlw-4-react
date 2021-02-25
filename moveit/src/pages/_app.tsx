@@ -4,16 +4,19 @@ import { AppProps } from 'next/app';
 import GlobalStyles from '../styles/GlobalStyles';
 
 import { ChallengesProvider } from '../contexts/ChallengesContext';
+import { CountdownProvider } from '../contexts/CountdownContext';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
 
 	return (
-		<>
-			<GlobalStyles />
-			
-			<ChallengesProvider>
+		<ChallengesProvider>
+			<CountdownProvider>
+
+				<GlobalStyles />
+
 				<Component {...pageProps} />
-			</ChallengesProvider>
-		</>
+
+			</CountdownProvider>
+		</ChallengesProvider>
 	);
 }

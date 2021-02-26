@@ -27,6 +27,8 @@ export const Container = styled.div`
         width: 0px;
         height: 100%;
         background: var(--blue);
+
+        transition: width 0.2s;
     }
 
     .bar .current-xp {
@@ -36,5 +38,7 @@ export const Container = styled.div`
         transform: translateX(-50%);
 
         white-space: nowrap;
+
+        transition: left 0.2s;
     }
 `;

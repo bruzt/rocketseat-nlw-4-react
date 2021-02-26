@@ -11,6 +11,9 @@ export default function CountdownClock(){
 	const minutesArray = String(countdownContext.minutes).padStart(2, '0').split('');
 	const secondsArray = String(countdownContext.seconds).padStart(2, '0').split('');
 
+	// 25 * 60 = 25 minutes in seconds
+	const timePercentage = Math.abs((((Number(String(countdownContext.minutes) + '.' + String(countdownContext.seconds).padStart(2, '0')) * 60) / (25 * 60)) - 1) * 100);
+
 	return (
 		<Container>
 			
@@ -50,6 +53,10 @@ export default function CountdownClock(){
 						onClick={countdownContext.resetCountdown}
 					>
 						<span>Abandonar ciclo <AiOutlineCloseIcon /></span>
+
+						<div className="time-progress" style={{ width: `${timePercentage}%` }}>
+
+						</div>
 					</button>
 				) : (
 					<button 

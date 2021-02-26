@@ -97,10 +97,27 @@ export const Container = styled.div`
         color: var(--text);
         background: var(--white);
 
+        position: relative;
+
         &:hover {
             color: var(--white);
             background: var(--red);
         }
+
+    }
+
+    button.active .time-progress {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        height: 5px;
+        background: var(--green);
+
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+
+        transition: width 0.2s;
     }
 
     button.finished {

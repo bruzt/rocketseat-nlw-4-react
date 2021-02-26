@@ -3,6 +3,8 @@ import cookies from 'js-cookie';
 
 import challenges from '../../challenges.json';
 
+import LevelUpModal from '../components/LevelUpModal';
+
 interface IProps {
     children: React.ReactNode;
 }
@@ -18,6 +20,8 @@ interface IChallengesContext {
     experienceToNextLevel: number;
     completeChallenge: () => void;
     setCookiesData: (level: number, currentExperience: number, challengesCompleted: number) => void;
+    showLevelUpModalState: boolean;
+    setShowLevelUpModal: React.Dispatch<boolean>;
 }
 
 interface IChallenge {
@@ -34,6 +38,7 @@ export function ChallengesProvider({ children }: IProps){
     const [currentExperienceState, setCurrentExperience] = useState(0);
     const [challengesCompletedState, setChallengesCompleted] = useState(0);
     const [activeChallengeState, setActiveChallenge] = useState<IChallenge>(null);
+    const [showLevelUpModalState, setShowLevelUpModal] = useState(false);
 
     const experienceToNextLevel = Math.pow((levelState + 1) * 4, 2);
 
@@ -56,6 +61,7 @@ export function ChallengesProvider({ children }: IProps){
 
     function levelUp(){
         setLevel(levelState + 1);
+        setShowLevelUpModal(true);
     }
 
     function startNewChallenge(){
@@ -110,10 +116,16 @@ export function ChallengesProvider({ children }: IProps){
                 resetChallenge,
                 experienceToNextLevel,
                 completeChallenge,
-                setCookiesData
+                setCookiesData,
+                showLevelUpModalState,
+                setShowLevelUpModal
             }}
         >
+
+            <LevelUpModal level={levelState} showModal={showLevelUpModalState} setShowModal={setShowLevelUpModal} />
+
             {children}
+            
         </ChallengeContext.Provider>
     )
 }

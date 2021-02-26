@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Head from 'next/head';
 
 import XpBar from '../XpBar';
@@ -10,9 +10,22 @@ import { useChallenges } from '../../contexts/ChallengesContext';
 
 import { Container } from './styles';
 
-export default function Landing(){
+interface IProps {
+	level: number;
+	currentExperience: number;
+	challengesCompleted: number;
+}
 
-	const { challengesCompletedState } = useChallenges();
+export default function Landing({ challengesCompleted, currentExperience, level}: IProps){
+
+	const { challengesCompletedState, setCookiesData } = useChallenges();
+
+	useEffect( () => {
+		if(challengesCompleted != null && currentExperience != null && level != null) {
+			
+			setCookiesData(level, currentExperience, challengesCompleted);
+		}
+	}, []);
 
 	return (
 		<Container>

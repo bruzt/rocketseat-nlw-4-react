@@ -1,8 +1,14 @@
 import React, { FormEvent, useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+
+import { useUser } from '../../contexts/UserContext';
 
 import { Container } from './styles';
 
 export default function LoginPage() {
+
+	const router = useRouter();
+	const userContext = useUser();
 
 	const [usernameState, setUsername] = useState('');
 	const [isValidUserState, setIsValidUser] = useState(false);
@@ -14,9 +20,13 @@ export default function LoginPage() {
 
 	}, [usernameState]);
 
-	function onSubmit(event: FormEvent){
+	async function onSubmit(event: FormEvent){
 
 		event.preventDefault();
+
+		const user = await userContext.fetchGitUser(usernameState);
+
+		if(user) router.push('/home');
 	}
 
 	return (

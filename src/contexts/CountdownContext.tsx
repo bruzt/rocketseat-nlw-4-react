@@ -6,7 +6,7 @@ interface IProps {
     children: React.ReactNode;
 }
 
-interface IChallengesContext {
+interface ICountdownContext {
     minutes: number;
     seconds: number;
     hasFinishedState: boolean;
@@ -15,10 +15,10 @@ interface IChallengesContext {
     resetCountdown: () => void;
 }
 
-const ChallengeContext = createContext({});
+const CountdownContext = createContext({});
 
 let countdownTimeout: NodeJS.Timeout;
-const countdownTimeInSeconds = 0.1 * 60;
+const countdownTimeInSeconds = 25 * 60;
 
 export function CountdownProvider({ children }: IProps){
 
@@ -62,7 +62,7 @@ export function CountdownProvider({ children }: IProps){
 	const seconds = timeState % 60;
 
     return (
-        <ChallengeContext.Provider 
+        <CountdownContext.Provider 
             value={{ 
                 minutes,
                 seconds,
@@ -73,13 +73,13 @@ export function CountdownProvider({ children }: IProps){
             }}
         >
             {children}
-        </ChallengeContext.Provider>
+        </CountdownContext.Provider>
     )
 }
 
 export function useCountdown(){
 
-    const context = useContext(ChallengeContext) as IChallengesContext;
+    const context = useContext(CountdownContext) as ICountdownContext;
 
     return context;
 }

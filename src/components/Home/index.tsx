@@ -16,7 +16,7 @@ interface IProps {
 	challengesCompleted: number;
 }
 
-export default function Landing({ challengesCompleted, currentExperience, level}: IProps){
+export default function Home({ challengesCompleted, currentExperience, level}: IProps){
 
 	const { challengesCompletedState, setCookiesData } = useChallenges();
 

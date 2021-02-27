@@ -51,4 +51,7 @@ export default createGlobalStyle`
         text-decoration: none;
     }
 
+    input {
+        font: inherit;
+    }
 `;

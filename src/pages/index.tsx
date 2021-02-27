@@ -1,7 +1,7 @@
 import React from 'react';
 import { GetServerSideProps } from 'next';
 
-import Landing from '../components/Landing';
+import LoginPage from '../components/LoginPage';
 
 interface IProps {
 	level: number;
@@ -12,11 +12,17 @@ interface IProps {
 export default function Home({ challengesCompleted, currentExperience, level }: IProps) {
 
 	return (
-		<Landing 
-			challengesCompleted={challengesCompleted} 
-			currentExperience={currentExperience} 
-			level={level}
-		/>
+		<>
+		<LoginPage />
+		{/* 
+			<LoginPage 
+				challengesCompleted={challengesCompleted} 
+				currentExperience={currentExperience} 
+				level={level}
+			/>
+	
+		*/}
+		</>
 	);
 }
 

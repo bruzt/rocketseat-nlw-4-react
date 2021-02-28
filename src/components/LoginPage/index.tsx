@@ -1,5 +1,4 @@
 import React, { FormEvent, useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
 
 import { useUser } from '../../contexts/UserContext';
 
@@ -7,7 +6,6 @@ import { Container } from './styles';
 
 export default function LoginPage() {
 
-	const router = useRouter();
 	const userContext = useUser();
 
 	const [usernameState, setUsername] = useState('');
@@ -24,9 +22,7 @@ export default function LoginPage() {
 
 		event.preventDefault();
 
-		const user = await userContext.fetchGitUser(usernameState);
-
-		if(user) router.push('/home');
+		await userContext.fetchGitUser(usernameState);
 	}
 
 	return (

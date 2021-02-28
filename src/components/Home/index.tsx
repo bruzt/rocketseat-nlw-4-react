@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Head from 'next/head';
 
 import XpBar from '../XpBar';
@@ -10,22 +10,9 @@ import { useChallenges } from '../../contexts/ChallengesContext';
 
 import { Container } from './styles';
 
-interface IProps {
-	level: number;
-	currentExperience: number;
-	challengesCompleted: number;
-}
+export default function Home(){
 
-export default function Home({ challengesCompleted, currentExperience, level}: IProps){
-
-	const { challengesCompletedState, setCookiesData } = useChallenges();
-
-	useEffect( () => {
-		if(challengesCompleted != null && currentExperience != null && level != null) {
-			
-			setCookiesData(level, currentExperience, challengesCompleted);
-		}
-	}, []);
+	const { challengesCompletedState } = useChallenges();
 
 	return (
 		<Container>

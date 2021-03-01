@@ -19,7 +19,7 @@ interface IChallengesContext {
     resetChallenge: () => void;
     experienceToNextLevel: number;
     completeChallenge: () => void;
-    setCookiesData: (level: number, currentExperience: number, challengesCompleted: number, username: string) => void;
+    setCookiesData: (level: number, currentExperience: number, challengesCompleted: number) => void;
     showLevelUpModalState: boolean;
     setShowLevelUpModal: React.Dispatch<boolean>;
 }
@@ -53,7 +53,7 @@ export function ChallengesProvider({ children }: IProps){
         Notification.requestPermission();
     }, []);
 
-    function setCookiesData(level: number, currentExperience: number, challengesCompleted: number, username: string){
+    function setCookiesData(level: number, currentExperience: number, challengesCompleted: number){
         setLevel(level);
         setCurrentExperience(currentExperience);
         setChallengesCompleted(challengesCompleted);

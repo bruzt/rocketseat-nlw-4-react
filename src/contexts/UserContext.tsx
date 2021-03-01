@@ -12,6 +12,7 @@ interface IUserContext {
     fetchGitUser: (username: string) => Promise<void>;
     nameState: string;
     photoUrlState: string;
+    setName: React.Dispatch<string>;
 }
 
 const UserContext = createContext({});
@@ -26,12 +27,15 @@ export function UserContextProvider({ children }: IProps){
     async function fetchGitUser(username: string){
         try {
             
+            if(username == null || username.trim().length == 0) throw new Error('Usuário inválido');
+            
             const response = await githubAPI.get(`/${username}`);
     
             setName(response.data.name);
             setPhotoUrl(response.data.avatar_url);
 
             cookies.set('username', username);
+            //cookies.set('name', response.data.name);
 
             router.push('/home');
 
@@ -45,7 +49,8 @@ export function UserContextProvider({ children }: IProps){
             value={{ 
                 fetchGitUser,
                 nameState,
-                photoUrlState
+                photoUrlState,
+                setName
             }}
         >
             {children}

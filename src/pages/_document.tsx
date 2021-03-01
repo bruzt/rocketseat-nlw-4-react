@@ -41,7 +41,7 @@ export default class MyDocument extends Document {
 
 	render(){
 		return (
-			<Html>
+			<Html lang='pt-br'>
 				<Head>
 					<link rel="shortcut icon" href="favicon.png" type="image/x-icon"/>
 					<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />

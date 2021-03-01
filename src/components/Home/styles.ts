@@ -57,7 +57,7 @@ export const Container = styled.div`
     @media (max-width: 965px) {
 
         .panel {
-            padding: 10px;
+            padding: 5px;
         }
     }
 

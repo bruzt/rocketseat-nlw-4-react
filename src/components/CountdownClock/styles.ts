@@ -39,7 +39,8 @@ export const Container = styled.div`
     }
 
     .countdown .number-container {
-        width: 5.75rem;
+        width: 100%;
+        max-width: 5.75rem;
         height: 100%;
 
         background: var(--white);

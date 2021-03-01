@@ -55,7 +55,8 @@ export const Container = styled.div`
     }
 
     .input-container input {
-        width: 21rem;
+        width: 100%;
+        max-width: 21rem;
         height: 5rem;
 
         border: 0;
@@ -89,7 +90,9 @@ export const Container = styled.div`
         }
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 1000px) {
+        padding: 10px;
+        
         form {
             transform: translateX(0);
         }

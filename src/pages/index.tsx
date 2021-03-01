@@ -23,7 +23,7 @@ export default function Home({ challengesCompleted, currentExperience, level, us
 		if(challengesCompleted != null && currentExperience != null && level != null && username != null) {
 			
 			userContext.fetchGitUser(username);
-			challengesContext.setCookiesData(level, currentExperience, challengesCompleted, username);
+			challengesContext.setCookiesData(level, currentExperience, challengesCompleted);
 			
 			setTimeout( () => {
 				setLogin(true);
@@ -57,7 +57,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 			level: Number(level),
 			currentExperience: Number(currentExperience),
 			challengesCompleted: Number(challengesCompleted),
-			username: String(username),
+			username: username == null ? null : username,
 		}
 	}
 }

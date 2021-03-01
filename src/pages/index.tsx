@@ -10,31 +10,33 @@ interface IProps {
 	currentExperience: number;
 	challengesCompleted: number;
 	username: string;
+	name: string;
 }
 
-export default function Home({ challengesCompleted, currentExperience, level, username }: IProps) {
+export default function Home({ challengesCompleted, currentExperience, level, username, name }: IProps) {
 
 	const challengesContext = useChallenges();
 	const userContext = useUser();
 
-	const [loginState, setLogin] = useState(false);
+	const [delayedLoginState, setDelayedLogin] = useState(false);
 
 	useEffect( () => {
-		if(challengesCompleted != null && currentExperience != null && level != null && username != null) {
+		if(username != null) {
 			
-			userContext.fetchGitUser(username);
+			userContext.fetchGitUser(username, true);
+			userContext.setName(name);
 			challengesContext.setCookiesData(level, currentExperience, challengesCompleted);
 			
 			setTimeout( () => {
-				setLogin(true);
-			}, 1000)
+				setDelayedLogin(true);
+			}, 1000);
 
 		} else {
-			setLogin(true);
+			setDelayedLogin(true);
 		}
 	}, []);
 
-	if(loginState){
+	if(delayedLoginState){
 
 		return <LoginPage />;
 
@@ -49,7 +51,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 		level, 
 		currentExperience, 
 		challengesCompleted,
-		username 
+		username,
+		name
 	} = ctx.req.cookies;
 
 	return {
@@ -58,6 +61,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 			currentExperience: Number(currentExperience),
 			challengesCompleted: Number(challengesCompleted),
 			username: username == null ? null : username,
+			name: name == null ? null : username,
 		}
 	}
 }

@@ -23,8 +23,8 @@ export default function Home({ challengesCompleted, currentExperience, level, us
 	useEffect( () => {
 		if(username != null) {
 			
-			userContext.fetchGitUser(username, true);
 			userContext.setName(name);
+			userContext.fetchGitUser(username);
 			challengesContext.setCookiesData(level, currentExperience, challengesCompleted);
 			
 			setTimeout( () => {

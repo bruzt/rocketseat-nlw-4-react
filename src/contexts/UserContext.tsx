@@ -9,7 +9,7 @@ interface IProps {
 }
 
 interface IUserContext {
-    fetchGitUser: (username: string, autoLogin?: boolean) => Promise<void>;
+    fetchGitUser: (username: string) => Promise<void>;
     nameState: string;
     photoUrlState: string;
     setName: React.Dispatch<string>;
@@ -24,7 +24,7 @@ export function UserContextProvider({ children }: IProps){
     const [nameState, setName] = useState('');
     const [photoUrlState, setPhotoUrl] = useState('');
 
-    async function fetchGitUser(username: string, autoLogin = false){
+    async function fetchGitUser(username: string){
         try {
             
             if(username == null || username.trim().length == 0) throw new Error('Usuário inválido');
@@ -41,7 +41,7 @@ export function UserContextProvider({ children }: IProps){
 
         } catch (error) {
             // usar offline
-            if(autoLogin){
+            if(nameState){
                 router.push('/home');
             } else {
                 alert('Erro ao buscar usuário');
